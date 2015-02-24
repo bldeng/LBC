@@ -1,0 +1,1 @@
+Unzip the triangle source codes (http://www.cs.cmu.edu/~quake/triangle.html) into this folder, such that the header file triangle.h is located at external/triangle/triangle.h .

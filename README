@@ -1,0 +1,66 @@
+LBC -- Local Barycentric Coordinates
+
+----------------------------------------------------------------
+
+
+Overview
+
+This code implements the algorithm in the following paper:
+
+Juyong Zhang, Bailin Deng, Zishun Liu, Giuseppe Patanè, Sofien Bouaziz, Kai Hormann, and Ligang Liu. 2014. Local barycentric coordinates. ACM Trans. Graph. 33, 6, 2014.
+
+The GUI allows the user to load a 2D control cage, and compute the corresponding LBC. Currently there is no GUI support for loading 3D cages, although the solver code works for 3D cases too.
+
+Currently the code only works on Linux.
+
+
+-----------------------------------------------------------------
+
+
+Compiling
+
+The code depends on the following external libraries:
+- Eigen (http://eigen.tuxfamily.org), for linear algebra operations.
+- Triangle (http://www.cs.cmu.edu/~quake/triangle.html), for Delaunay triangulation.
+- Optionally, Cholmod (http://faculty.cse.tamu.edu/davis/suitesparse.html) for solving the linear system.
+
+To install Eigen:
+- The easiest way is to install eigen from the software repository. For example, on Ubuntu and Debian, use the following command: apt-get install libeigen3-dev.
+- Alternatively, you can download the source code of Eigen, extract it into the folder 'external' and rename the extracted folder as 'eigen'. In the end, you should be able to find the following file: external/eigen/Eigen/Dense .
+
+To install Triangle:
+- Download the source code, extract it into the folder 'external', and name the extracted folder as 'triangle'. Afterwards, you should be able to find the file external/triangle/triangle.h .
+
+For Cholmod:
+- Install suitesparse on Ubuntu/Debian with: apt-get install libsuitesparse-dev .
+
+With all the dependencies in place, you can generate the project files from LBC.pro, either by opening it in Qt Creator, or by using the qmake command directly. 
+
+
+------------------------------------------------------------------
+
+
+Usage
+
+1) Press the button "Load 2D Cage" to load a cage obj file from folder 'data'. The vertices from the obj files are used as cage vertices.
+
+2) Set the target number of cells for triangulation, and press the button "Triangulate" to compute the triangulation.
+
+3) Set the solver parameters if necessary, then press the button "Compute LBC" to compute the coordinates.
+
+4) Afterwards, check the checkbox "Display Weights", and click a control point to view its coordinate values via color coding.
+
+
+------------------------------------------------------------------
+
+
+Contact
+
+The code is written by Bailin Deng (bldeng@gmail.com) and Zishun Liu (liuzishun@gmail.com). Feel free to contact Bailin if you have comments or questions.
+
+
+-------------
+
+License
+
+LBC is released under GNU GPL V3.
