@@ -46,3 +46,14 @@ unix:!macx{
         LIBS += -lamd -lcamd -lcolamd -lccolamd -lcholmod
     }
 }
+
+win32{
+    DEFINES += NO_TIMER NOMINMAX
+    QMAKE_CXXFLAGS *= /openmp
+    QMAKE_CXXFLAGS *= /MP
+
+    # Copy texture file to output
+    VIZ_TEXTURE += $${_PRO_FILE_PWD_}/colorbar_texture.png
+    VIZ_TEXTURE ~= s,/,\\,g
+    QMAKE_POST_LINK += $$quote(cmd /c copy /y $${VIZ_TEXTURE} $${DESTDIR})
+}
