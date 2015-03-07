@@ -34,9 +34,17 @@
 #define REAL double
 #endif /* not SINGLE */
 
+
+// VOID macro required for the default triangle library
 #ifndef VOID
 #define VOID void
 #endif
+
+// TRIVOID macro required for the win64 triangle library
+#ifndef TRIVOID
+#define TRIVOID void
+#endif
+
 
 extern "C"{
 #include "external/triangle/triangle.h"
