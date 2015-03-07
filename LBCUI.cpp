@@ -33,7 +33,10 @@
 #else /* not SINGLE */
 #define REAL double
 #endif /* not SINGLE */
-#define VOID int
+
+#ifndef VOID
+#define VOID void
+#endif
 
 extern "C"{
 #include "external/triangle/triangle.h"
@@ -226,11 +229,9 @@ void LBCUI::delaunay_Triangulation(int numTriangles)
     std::ostringstream ostr_switches;
     ostr_switches << "pza" << averageArea << "q33.0Y";
     std::string switches = ostr_switches.str();
-    char* s=new char[switches.size()];
-    strcpy(s,switches.c_str());
-    std::cout << s << std::endl;
-    triangulate(s, &in, &out, (struct triangulateio *) NULL);
-    delete[] s;
+    std::vector<char> switch_chars(switches.length() + 1, '\0');
+    switches.copy(&(switch_chars[0]), switches.length());
+    triangulate(&(switch_chars[0]), &in, &out, (struct triangulateio *) NULL);
 
     m_delaunay.resize(3, out.numberofpoints);
     for(int i = 0; i < out.numberofpoints; ++i){

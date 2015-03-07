@@ -1,1 +1,3 @@
 Unzip the triangle source codes (http://www.cs.cmu.edu/~quake/triangle.html) into this folder, such that the header file triangle.h is located at external/triangle/triangle.h .
+
+On Windows, you also need to extract the eigen source codes to this folder, and rename the eigen folder as eigen. Make sure you can locate the file external/eigen/Eigen/Dense afterwards.

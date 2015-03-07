@@ -46,3 +46,21 @@ unix:!macx{
         LIBS += -lamd -lcamd -lcolamd -lccolamd -lcholmod
     }
 }
+
+win32 {
+    CONFIG += static
+    DEFINES += NO_TIMER NOMINMAX
+    DEFINES -= USE_CHOLMOD
+
+    win32-g++*{
+        LIBS += -Wl,-Bstatic -lgomp
+        QMAKE_LFLAGS += -static
+        QMAKE_CXXFLAGS += -fopenmp
+    }
+
+    win32-msvc*{
+        QMAKE_CXXFLAGS *= /openmp
+    }
+
+    QMAKE_POST_LINK = copy $$shell_path($${_PRO_FILE_PWD_}/colorbar_texture.png) $$shell_path($${OUT_PWD}) /Y
+}
