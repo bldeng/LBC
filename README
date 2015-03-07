@@ -11,7 +11,7 @@ Juyong Zhang, Bailin Deng, Zishun Liu, Giuseppe Patanè, Sofien Bouaziz, Kai Hor
 
 The GUI allows the user to load a 2D control cage, and compute the corresponding LBC. Currently there is no GUI support for loading 3D cages, although the solver code works for 3D cases too.
 
-Currently the code works on Linux and Windows. On Windows, it should be compiled as a 32-bit application, due to an issue of the triangle library on 64-bit environments.
+Currently the code works on Linux and Windows.
 
 
 -----------------------------------------------------------------
@@ -30,6 +30,7 @@ To install Eigen:
 
 To install Triangle:
 - Download the source code, extract it into the folder 'external', and name the extracted folder as 'triangle'. Afterwards, you should be able to find the file external/triangle/triangle.h .
+- When compiled as a 64-bit application on Windows, the program might crash during triangulation because of an issue of the Triangle library. In order to fix this, you need to download the source codes from https://github.com/mesheldrake/Math-Geometry-Delaunay/tree/master/src_Win64 , and copy them to the folder external/triangle to replace the original codes of Triangle.
 
 For Cholmod:
 - Install suitesparse on Ubuntu/Debian with: apt-get install libsuitesparse-dev, and uncomment the line "DEFINES += USE_CHOLMOD" in the file LBC.pro .
