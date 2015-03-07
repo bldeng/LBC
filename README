@@ -11,7 +11,7 @@ Juyong Zhang, Bailin Deng, Zishun Liu, Giuseppe Patanè, Sofien Bouaziz, Kai Hor
 
 The GUI allows the user to load a 2D control cage, and compute the corresponding LBC. Currently there is no GUI support for loading 3D cages, although the solver code works for 3D cases too.
 
-Currently the code only works on Linux.
+Currently the code works on Linux and Windows. On Windows, it should be compiled as a 32-bit application, due to an issue of the triangle library on 64-bit environments.
 
 
 -----------------------------------------------------------------
@@ -22,17 +22,17 @@ Compiling
 The code depends on the following external libraries:
 - Eigen (http://eigen.tuxfamily.org), for linear algebra operations.
 - Triangle (http://www.cs.cmu.edu/~quake/triangle.html), for Delaunay triangulation.
-- Optionally, Cholmod (http://faculty.cse.tamu.edu/davis/suitesparse.html) for solving the linear system.
+- Optionally, Cholmod (http://faculty.cse.tamu.edu/davis/suitesparse.html) for solving the linear system (supported on Linux only).
 
 To install Eigen:
-- The easiest way is to install eigen from the software repository. For example, on Ubuntu and Debian, use the following command: apt-get install libeigen3-dev.
-- Alternatively, you can download the source code of Eigen, extract it into the folder 'external' and rename the extracted folder as 'eigen'. In the end, you should be able to find the following file: external/eigen/Eigen/Dense .
+- On Linux, the easiest way is to install eigen from the software repository. For example, on Ubuntu and Debian, use the following command: apt-get install libeigen3-dev.
+- On windows, download the source code of Eigen, extract it into the folder 'external' and rename the extracted folder as 'eigen'. In the end, you should be able to find the following file: external/eigen/Eigen/Dense . 
 
 To install Triangle:
 - Download the source code, extract it into the folder 'external', and name the extracted folder as 'triangle'. Afterwards, you should be able to find the file external/triangle/triangle.h .
 
 For Cholmod:
-- Install suitesparse on Ubuntu/Debian with: apt-get install libsuitesparse-dev .
+- Install suitesparse on Ubuntu/Debian with: apt-get install libsuitesparse-dev, and uncomment the line "DEFINES += USE_CHOLMOD" in the file LBC.pro .
 
 With all the dependencies in place, you can generate the project files from LBC.pro, either by opening it in Qt Creator, or by using the qmake command directly. 
 
@@ -57,6 +57,14 @@ Usage
 Contact
 
 The code is written by Bailin Deng (bldeng@gmail.com) and Zishun Liu (liuzishun@gmail.com). Feel free to contact Bailin if you have comments or questions.
+
+
+------------------------------------------------------------------
+
+
+Acknowledgements
+
+We would like to thank Ibraheem Alhashim and Benjamin Kluwe for their help on porting the codes to Windows.
 
 
 -------------
